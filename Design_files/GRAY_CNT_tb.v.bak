@@ -1,0 +1,29 @@
+/////////simulation of TOP module = GRAY_CNT ***********///
+////Modelsim /////////
+
+
+module GRAY_CNT_tb ();
+parameter WID = 4;
+
+wire [WID-1:0] bin_out ;
+reg [WID -1:0 ] d_in ;
+wire [WID-1:0] g_nEXT ;
+
+ bin_gray UUT1  ( .b_in(d_in) , .g_out(g_nEXT) );
+ gray_bin UUT2 ( .g_in(g_nEXT) , .b_out(bin_out));
+
+
+	 
+	 integer i ;
+	 
+		  initial
+		   begin
+			 for ( i = 0; i<50; i = i + 1)
+			  begin
+			  #10  d_in = $random () ;
+			  #1000 $stop ;
+				 end
+				 end
+		  
+		  endmodule
+		  
